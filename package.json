@@ -32,10 +32,10 @@
     "url-loader": "4.1.1",
     "webpack": "5.6.0",
     "webpack-cli": "4.2.0",
-    "webpack-dev-server": "3.11.0"
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "axios": "0.21.0",
+    "axios": "^0.21.1",
     "easy-ftp": "0.4.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
