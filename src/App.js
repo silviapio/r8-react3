@@ -5,10 +5,12 @@ import Joke from "./Joke";
 export default () => {
     const [currentPosition, setCurrentPosition] = useState(-1);
     const [jokes, setJokes] = useState([]);
+    const [nextIsDisabled, disableNext] = useState(false);
     let currentJoke = jokes[currentPosition];
 
     async function handleClick() {
         if (currentPosition < jokes.length) {
+            disableNext(true);
             let newIndex = await axios.get("https://icanhazdadjoke.com/", {
                 headers: {
                     "Accept": "application/json"
@@ -20,7 +22,8 @@ export default () => {
                 ]);
                 return jokes.length;
             });
-            setCurrentPosition(newIndex);   
+            setCurrentPosition(newIndex);
+            disableNext(false);   
         }             
     }
 
@@ -28,9 +31,8 @@ export default () => {
         <div>
             <header>Let's begin the day with a good laugh!</header>
             <Joke text={currentJoke} />
-            <p>{currentPosition}</p>
             <div>
-                <button onClick={() => handleClick()}>Next</button>
+                <button onClick={() => handleClick()} disabled={nextIsDisabled}>Next</button>
             </div>
         </div>
     );
