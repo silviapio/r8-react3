@@ -12,11 +12,22 @@ const BackgroundDiv = styled.div`
     background-blend-mode: overlay;
     font-family: 'Work Sans', sans-serif;
     display: flex;
-    align-items: start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+`;
+const WeatherDiv = styled.div`
+    align-self: flex-start;
+    padding-left: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.75rem;    
+    p {
+        margin: 0;
+        color: #456268;
+    } 
 `;
 const JokeDiv = styled.div`
-    margin-top: 7vh;
+    margin-top: 0.5rem;
     padding: 0.5rem;
     min-height: 165px;
     width: 40vw;
@@ -65,6 +76,13 @@ export default () => {
     const [jokes, setJokes] = useState([]);
     const [nextIsDisabled, disableNext] = useState(false);
     let currentJoke = jokes[currentPosition];
+    let weather = "";
+
+    useEffect(async ()=> {
+        let currentConditions = await axios.get("api.openweathermap.org/data/2.5/weather?q={Barcelona, ES}&appid={500a5cfb8db5ea91e3d49a9f8bee71c0}")
+            .then((response) => { });
+        weather = "Today in Barcelona we have" + currentConditions;
+    })
 
     async function handleClick() {
         if (currentPosition < jokes.length) {
@@ -87,6 +105,9 @@ export default () => {
 
     return (
         <BackgroundDiv>
+            <WeatherDiv>
+                <p>Today in Barcelona it's sunny :){/*weather*/}</p>
+            </WeatherDiv>
             <JokeDiv>
             <header style={{fontWeight: "500", textAlign: "center"}}>Let's begin the day with a good laugh 🤣</header>
             <PContainer>
