@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import styled from 'styled-components';
 import Joke from "./Joke";
+import OpenWeather from "./OpenWeather";
 
 const BackgroundDiv = styled.div`
     height: 100vh;
@@ -76,13 +77,6 @@ export default () => {
     const [jokes, setJokes] = useState([]);
     const [nextIsDisabled, disableNext] = useState(false);
     let currentJoke = jokes[currentPosition];
-    let weather = "";
-
-    useEffect(async ()=> {
-        let currentConditions = await axios.get("api.openweathermap.org/data/2.5/weather?q={Barcelona, ES}&appid={500a5cfb8db5ea91e3d49a9f8bee71c0}")
-            .then((response) => { });
-        weather = "Today in Barcelona we have" + currentConditions;
-    })
 
     async function handleClick() {
         if (currentPosition < jokes.length) {
@@ -106,7 +100,7 @@ export default () => {
     return (
         <BackgroundDiv>
             <WeatherDiv>
-                <p>Today in Barcelona it's sunny :){/*weather*/}</p>
+                <OpenWeather city="Barcelona" />
             </WeatherDiv>
             <JokeDiv>
             <header style={{fontWeight: "500", textAlign: "center"}}>Let's begin the day with a good laugh 🤣</header>
