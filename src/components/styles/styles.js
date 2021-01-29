@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const BackgroundDiv = styled.div`
     height: 100vh;
     min-height : 100vh;
-    background: url('../../img/people-laughing.jpg') no-repeat;
+    background: ${props => props.welcome? "url('../../../img/welcome.jpg')" : "url('../../../img/people-laughing.jpg')"} no-repeat;
     background-size: cover;
     background-color: #b2bec3;
     background-blend-mode: overlay;
@@ -23,7 +23,7 @@ export const WeatherDiv = styled.div`
         color: #456268;
     } 
 `;
-export const JokeDiv = styled.div`
+export const WindowDiv = styled.div`
     box-sizing: border-box;
     margin-top: 0.5rem;
     padding: 1rem;

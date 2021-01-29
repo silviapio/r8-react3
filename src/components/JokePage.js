@@ -1,8 +1,7 @@
-import React, { useState } from "react";
-import axios from 'axios';
-import Joke from "../Joke";
-import OpenWeather from "../OpenWeather";
-import {BackgroundDiv, WeatherDiv, JokeDiv, PContainer, NextButton} from './styles';
+import React, {useState} from 'react';
+import Joke from './Joke';
+import OpenWeather from './OpenWeather';
+import {WindowDiv, WeatherDiv, PContainer, NextButton} from './styles/styles';
 
 export default () => {
     const [currentPosition, setCurrentPosition] = useState(-1);
@@ -10,6 +9,7 @@ export default () => {
     const [nextIsDisabled, disableNext] = useState(false);
     let currentJoke = jokes[currentPosition];
 
+    /* REVIEW
     async function handleClick() {
         if (currentPosition < jokes.length) {
             disableNext(true);
@@ -27,22 +27,25 @@ export default () => {
             setCurrentPosition(newIndex);
             disableNext(false);   
         }             
-    }
+    }*/
 
-    return (
-        <BackgroundDiv>
-            <WeatherDiv>
+    return(
+    <div>
+        <WeatherDiv>
                 <OpenWeather city="Barcelona" />
-            </WeatherDiv>
-            <JokeDiv>
+        </WeatherDiv>
+        <WindowDiv joke>
             <header style={{fontWeight: "500", textAlign: "center"}}>Let's begin the day with a good laugh 🤣</header>
             <PContainer>
-            <Joke text={currentJoke} />
+            <Joke text="This will be the current joke" />
             </PContainer>
             <div>
-                <NextButton onClick={() => handleClick()} disabled={nextIsDisabled}>Next Joke</NextButton>
+                <NextButton >Next Joke</NextButton>
             </div>
-            </JokeDiv>
-        </BackgroundDiv>
+        </WindowDiv>
+    </div>
     );
-};
+}
+
+/*button next
+onClick={/*() => handleClick()} disabled={nextIsDisabled}*/

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import weatherID from './privateKeys.js';
+import weatherID from '../privateKeys.js';
 
 export default (props) => {
     const [ weatherText, setWeatherText ] = useState("");
