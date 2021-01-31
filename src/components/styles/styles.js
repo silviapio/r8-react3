@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 export const BackgroundDiv = styled.div`
     height: 100vh;
@@ -11,7 +11,6 @@ export const BackgroundDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
 `;
 export const WeatherDiv = styled.div`
     align-self: flex-start;
@@ -25,17 +24,10 @@ export const WeatherDiv = styled.div`
 `;
 export const WindowDiv = styled.div`
     box-sizing: border-box;
-    margin-top: 0.5rem;
+    margin-top: 6rem;
     padding: 1rem;
-    min-height: 165px;
-    width: 45vw;
-    @media(max-width: 576px) {
-        width: 90vw;
-    }
-    @media(max-width: 768px) {
-        width: 70vw;
-    }
-    background-color: #e8eae6;
+    align-self: center;
+    background-color: #f7f7e8;
     color: #456268;
     border-radius: 10px;
     box-shadow: inset 0 0 10px 0 #456268;
@@ -43,13 +35,26 @@ export const WindowDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    ${props => props.joke &&
+    css`
+        min-height: 165px;
+        margin-top: 0.5rem;
+        background-color: #e8eae6;
+        width: 45vw;
+        @media(max-width: 576px) {
+            width: 90vw;
+        }
+        @media(max-width: 768px) {
+            width: 70vw;
+        }
+    `}
 `;
 export const PContainer = styled.div`
     min-height: 4rem;
     text-align: center;
     font-size: 0.8rem;
 `;
-export const NextButton = styled.button`
+export const StyledButton = styled.button`
     font-family: 'Work Sans', sans-serif;
     font-weight: 500;
     color: #456268;

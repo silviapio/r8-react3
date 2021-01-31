@@ -1,24 +1,17 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import WelcomePage from './WelcomePage';
 import JokePage from './JokePage';
-import Joke from "./Joke";
-import OpenWeather from "./OpenWeather";
-import {BackgroundDiv} from './styles/styles';
 
 export default () => {
-    
-    const [onWelcomePage, setPage] = useState(false);
-    
-
-    
+    const [onWelcomePage, setPage] = useState(true);
 
     return (
-        <BackgroundDiv welcome={onWelcomePage}>
+        <div style={{minHeight: "100vh", margin: 0}}>
             {onWelcomePage ?
-                    <WelcomePage /> :
+                    <WelcomePage welcome={onWelcomePage} onEnterClick={() => setPage(false)}/> :
                     <JokePage />
             }
-        </BackgroundDiv>
+        </div>
+
     );
 };

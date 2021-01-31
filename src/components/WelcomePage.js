@@ -1,10 +1,12 @@
-import {WindowDiv} from './styles/styles';
+import {BackgroundDiv, StyledButton, WindowDiv} from './styles/styles';
 
-export default () => {
+export default (props) => {
     return(
+        <BackgroundDiv welcome={props.welcome}>
         <WindowDiv>
-            <header>This is my welcome message</header>
-            <button>Enter</button>
+            <header>Welcome and g'day!</header>
+            <StyledButton onClick={props.onEnterClick}>Enter</StyledButton>
         </WindowDiv>
+        </BackgroundDiv>
     )
 }
