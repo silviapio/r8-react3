@@ -1,5 +1,5 @@
-export default (props) => {
+export default ({text}) => {
     return (
-        <p>{props.text}</p>
+        <p>{text}</p>
     );
 };

@@ -43,6 +43,10 @@ export const JokeDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    header {
+        font-weight: 500;
+        text-align: center;
+    }
 `;
 export const PContainer = styled.div`
     min-height: 4rem;
