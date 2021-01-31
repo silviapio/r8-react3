@@ -46,6 +46,3 @@ export default () => {
     </BackgroundDiv>
     );
 }
-
-/*button next
-*/

@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import {BackgroundDiv, StyledButton, WindowDiv} from './styles/styles';
 
-export default (props) => {
+export default () => {
     return(
-        <BackgroundDiv welcome={props.welcome}>
+        <BackgroundDiv welcome>
         <WindowDiv>
-            <header>Welcome and g'day!</header>
-            <StyledButton onClick={props.onEnterClick}>Enter</StyledButton>
+            <header style={{paddingBottom: "1rem"}}>Welcome and g'day!</header>
+            <Link to="/joke"><StyledButton>Enter</StyledButton></Link>
         </WindowDiv>
         </BackgroundDiv>
     )

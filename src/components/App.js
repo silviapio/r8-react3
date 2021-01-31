@@ -1,17 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WelcomePage from './WelcomePage';
 import JokePage from './JokePage';
 
 export default () => {
-    const [onWelcomePage, setPage] = useState(true);
-
     return (
-        <div style={{minHeight: "100vh", margin: 0}}>
-            {onWelcomePage ?
-                    <WelcomePage welcome={onWelcomePage} onEnterClick={() => setPage(false)}/> :
-                    <JokePage />
-            }
-        </div>
-
+        <Router>
+            <Switch>
+            <Route path={"/"} exact component={WelcomePage}></Route>
+            <Route path={"/joke"} component={JokePage}></Route>
+            </Switch>
+        </Router> 
     );
 };

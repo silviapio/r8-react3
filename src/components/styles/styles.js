@@ -72,4 +72,10 @@ export const StyledButton = styled.button`
         border: 2px solid #fff;
         background-color: #E9ECE7;
     }
+    a {
+        text-decoration: none;
+        :visited {
+            color: inherit;
+        }
+    }
 `;
