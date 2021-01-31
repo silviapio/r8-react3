@@ -5,28 +5,19 @@ import OpenWeather from './OpenWeather';
 import {WindowDiv, WeatherDiv, PContainer, StyledButton, BackgroundDiv} from './styles/styles';
 
 export default () => {
-    const [currentPosition, setCurrentPosition] = useState(-1);
-    const [jokes, setJokes] = useState([]);
+    const [joke, setJoke] = useState("");
     const [nextIsDisabled, disableNext] = useState(false);
-    let currentJoke = jokes[currentPosition];
 
-    async function handleClick() {
-        if (currentPosition < jokes.length) {
-            disableNext(true);
-            let newIndex = await axios.get("https://icanhazdadjoke.com/", {
+    function handleClick() {
+        disableNext(true);
+        axios.get("https://icanhazdadjoke.com/", {
                 headers: {
                     "Accept": "application/json"
                 }
             }).then((response) => {
-                setJokes([
-                    ...jokes,
-                    response.data.joke
-                ]);
-                return jokes.length;
-            });
-            setCurrentPosition(newIndex);
-            disableNext(false);   
-        }             
+                setJoke(response.data.joke);
+                disableNext(false);
+            });    
     }
 
     return(
@@ -35,9 +26,9 @@ export default () => {
                 <OpenWeather city="Barcelona" />
         </WeatherDiv>
         <WindowDiv joke>
-            <header style={{fontWeight: "500", textAlign: "center"}}>Let's begin the day with a good laugh 🤣</header>
+            <header>Let's begin the day with a good laugh 🤣</header>
             <PContainer>
-                <Joke text={currentJoke} />
+                <Joke text={joke} />
             </PContainer>
             <div>
                 <StyledButton onClick={() => handleClick()} disabled={nextIsDisabled}>Next Joke</StyledButton>
@@ -46,6 +37,3 @@ export default () => {
     </BackgroundDiv>
     );
 }
-
-/*button next
-*/
