@@ -5,7 +5,7 @@ export default () => {
     return(
         <BackgroundDiv welcome>
         <WindowDiv>
-            <header style={{paddingBottom: "1rem"}}>Welcome and g'day!</header>
+            <header>Welcome and g'day!</header>
             <Link to="/joke"><StyledButton>Enter</StyledButton></Link>
         </WindowDiv>
         </BackgroundDiv>

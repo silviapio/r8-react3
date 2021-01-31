@@ -35,12 +35,20 @@ export const WindowDiv = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    header {
+        padding-bottom: 1rem
+    }
     ${props => props.joke &&
     css`
-        min-height: 165px;
+        min-height: 165px;  
         margin-top: 0.5rem;
         background-color: #e8eae6;
         width: 45vw;
+        header {
+            padding-bottom: 0;
+            font-weight: 500;
+            text-align: center;
+        }
         @media(max-width: 576px) {
             width: 90vw;
         }
