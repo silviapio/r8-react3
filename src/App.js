@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Joke from "./Joke";
+import { useState } from 'react';
+import Joke from './Joke';
 import fetchJoke from './services';
 import { BackgroundDiv, JokeDiv, PContainer, NextButton } from './styles/styles';
 
@@ -18,13 +18,13 @@ export default () => {
     return (
         <BackgroundDiv>
             <JokeDiv>
-            <header>Let's begin the day with a good laugh 🤣</header>
-            <PContainer>
-            <Joke text={joke} />
-            </PContainer>
-            <div>
-                <NextButton onClick={handleClick} disabled={nextIsDisabled}>Next</NextButton>
-            </div>
+                <header>Let's begin the day with a good laugh 🤣</header>
+                <PContainer>
+                    <Joke text={joke} />
+                </PContainer>
+                <div>
+                    <NextButton onClick={handleClick} disabled={nextIsDisabled}>Next</NextButton>
+                </div>
             </JokeDiv>
         </BackgroundDiv>
     );
