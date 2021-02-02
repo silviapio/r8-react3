@@ -1,5 +1,1 @@
-export default ({text}) => {
-    return (
-        <p>{text}</p>
-    );
-};
+export default ({text}) => <p>{text}</p>;
