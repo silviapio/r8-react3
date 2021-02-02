@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import axios from 'axios';
 import Joke from "./Joke";
+import fetchJoke from './services';
 
 export default () => {
     const [joke, setJoke] = useState("");
     const [nextIsDisabled, disableNext] = useState(false);
 
-    async function handleClick() {
+    function handleClick() {
         disableNext(true);
-        axios.get("https://icanhazdadjoke.com/", {
-            headers: {
-                "Accept": "application/json"
-            }
-        }).then((response) => {
+        fetchJoke().then((response) => {
             setJoke(
                 response.data.joke
             );
@@ -25,7 +21,7 @@ export default () => {
             <header>Let's begin the day with a good laugh!</header>
             <Joke text={joke} />
             <div>
-                <button onClick={() => handleClick()} disabled={nextIsDisabled}>Next</button>
+                <button onClick={handleClick} disabled={nextIsDisabled}>Next</button>
             </div>
         </div>
     );
