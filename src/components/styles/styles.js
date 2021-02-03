@@ -1,5 +1,10 @@
 import styled, {css} from 'styled-components';
 
+const desktopStartWidth = 780;
+const tabletStartWidth = 576;
+const tablet = `@media (max-width: ${desktopStartWidth}px)`;
+const mobile = `@media (max-width: ${tabletStartWidth}px)`;
+
 export const BackgroundDiv = styled.div`
     height: 100vh;
     min-height : 100vh;
@@ -49,10 +54,10 @@ export const WindowDiv = styled.div`
             font-weight: 500;
             text-align: center;
         }
-        @media(max-width: 576px) {
+        ${mobile} {
             width: 90vw;
         }
-        @media(max-width: 768px) {
+        ${tablet} {
             width: 70vw;
         }
     `}
@@ -69,7 +74,7 @@ export const StyledButton = styled.button`
     background-color: #cdd0cb;
     border-radius: 5px;
     border: 2px solid #456268;
-    @media(max-width: 768px) {
+    ${tablet} {
         padding: 0.25rem;
     }
     &:hover {

@@ -1,5 +1,1 @@
-export default (props) => {
-    return (
-        <p>{props.text}</p>
-    );
-};
+export default (props) => <p>{props.text}</p>;
