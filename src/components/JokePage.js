@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
-import axios from 'axios';
+import {useState} from 'react';
 import Joke from './Joke';
 import OpenWeather from './OpenWeather';
+import {fetchJoke} from './services';
 import {WindowDiv, WeatherDiv, PContainer, StyledButton, BackgroundDiv} from './styles/styles';
 
 export default () => {
@@ -10,11 +10,7 @@ export default () => {
 
     function handleClick() {
         disableNext(true);
-        axios.get("https://icanhazdadjoke.com/", {
-                headers: {
-                    "Accept": "application/json"
-                }
-            }).then((response) => {
+        fetchJoke().then((response) => {
                 setJoke(response.data.joke);
                 disableNext(false);
             });    
@@ -31,7 +27,7 @@ export default () => {
                 <Joke text={joke} />
             </PContainer>
             <div>
-                <StyledButton onClick={() => handleClick()} disabled={nextIsDisabled}>Next Joke</StyledButton>
+                <StyledButton onClick={handleClick} disabled={nextIsDisabled}>Next Joke</StyledButton>
             </div>
         </WindowDiv>
     </BackgroundDiv>
