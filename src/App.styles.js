@@ -1,9 +1,19 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import jokePageBg from './assets/people-laughing.jpg';
+
+export const GlobalStyle = createGlobalStyle`
+    body {
+        min-height: 100vh; 
+        box-sizing: border-box; 
+        margin: 0
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap');
+`;
 
 export const BackgroundDiv = styled.div`
     height: 100vh;
     min-height : 100vh;
-    background: url('../../img/people-laughing.jpg') no-repeat;
+    background: url(${jokePageBg}) no-repeat;
     background-size: cover;
     background-color: #b2bec3;
     background-blend-mode: overlay;
@@ -42,7 +52,7 @@ export const JokeDiv = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     header {
         font-weight: 500;
         text-align: center;
